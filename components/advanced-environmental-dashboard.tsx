@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useState, useCallback } from "react";
@@ -293,13 +295,19 @@ class DataStore {
     "#82ca9d",
   ];
 }
+interface DateRangePickerProps {
+  startDate: string;
+  endDate: string;
+  onStartDateChange: (date: string) => void;
+  onEndDateChange: (date: string) => void;
+}
 
 function DateRangePicker({
   startDate,
   endDate,
   onStartDateChange,
   onEndDateChange,
-}) {
+}: DateRangePickerProps) {
   return (
     <div className="flex items-center space-x-2">
       <div className="flex items-center space-x-2">
@@ -337,15 +345,17 @@ export function AdvancedEnvironmentalDashboardComponent() {
 
   const toggleSidebar = useCallback(() => setSidebarOpen((prev) => !prev), []);
 
-  const exportData = useCallback((format) => {
+  const exportData = useCallback((format: any) => {
     console.log(`Exporting data in ${format} format`);
   }, []);
 
-  const filterDataByThreshold = useCallback((data, threshold) => {
+  const filterDataByThreshold = useCallback((data: any[], threshold: number[]) => {
     return data.filter(
-      (item) => item.actual >= threshold[0] && item.actual <= threshold[1]
+      (item: { actual: number; }) => item.actual >= threshold[0] && item.actual <= threshold[1]
     );
   }, []);
+
+  const filteredEnergyData = filterDataByThreshold(DataStore.kpiData.energyUsage, energyThreshold);
 
   return (
     <div className="flex h-screen bg-gray-100">
