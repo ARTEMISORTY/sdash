@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export",
     "start": "next start",
     "lint": "next lint"
   },
@@ -23,9 +23,9 @@
     "all": "^0.0.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "debug": "^4.3.4",
+    "debug": "^4.3.7",
     "framer-motion": "^11.11.9",
-    "glob": "^9.0.0",
+    "glob": "^11.0.0",
     "lucide-react": "^0.453.0",
     "next": "14.2.15",
     "react": "^18.2.0",
@@ -33,7 +33,7 @@
     "recharts": "^2.13.0",
     "tailwind-merge": "^2.5.4",
     "tailwindcss-animate": "^1.0.7",
-    "uuid": "^9.0.0"
+    "uuid": "^11.0.2"
   },
   "devDependencies": {
     "@types/node": "^20",
