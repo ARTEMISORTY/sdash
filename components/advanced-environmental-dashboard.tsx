@@ -3,11 +3,11 @@
 import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  CalendarIcon,
+
   LeafIcon,
   BoltIcon,
   RecycleIcon,
-  TrashIcon,
+
   DropletIcon,
   DownloadIcon,
   MenuIcon,
@@ -36,7 +36,7 @@ import {
 } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
 import { Input } from "@/components/ui/input";
-import { LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, ResponsiveContainer, XAxis, YAxis, CartesianGrid, Tooltip, Legend, AreaChart, Area, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ScatterChart, Scatter } from "recharts";
+import { LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, ResponsiveContainer, XAxis, YAxis, CartesianGrid, Legend, AreaChart, Area, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ScatterChart, Scatter } from "recharts";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 
 class DataStore {
@@ -170,7 +170,17 @@ class DataStore {
   static COLORS = ["#00C49F", "#FFBB28", "#FF8042", "#0088FE", "#8884D8", "#82ca9d"];
 }
 
-function DateRangePicker({ startDate, endDate, onStartDateChange, onEndDateChange }) {
+function DateRangePicker({
+  startDate,
+  endDate,
+  onStartDateChange,
+  onEndDateChange,
+}: {
+  startDate: string;
+  endDate: string;
+  onStartDateChange: (date: string) => void;
+  onEndDateChange: (date: string) => void;
+}) {
   return (
     <div className="flex items-center space-x-2">
       <div className="flex items-center space-x-2">
@@ -204,15 +214,15 @@ export function AdvancedEnvironmentalDashboardComponent() {
   const [selectedLocation, setSelectedLocation] = useState("All Locations");
   const [startDate, setStartDate] = useState("2023-01-01");
   const [endDate, setEndDate] = useState("2023-06-30");
-  const [energyThreshold, setEnergyThreshold] = useState([0, 200]);
+  const [energyThreshold, setEnergyThreshold] = useState<[number, number]>([0, 200]);
 
   const toggleSidebar = useCallback(() => setSidebarOpen((prev) => !prev), []);
 
-  const exportData = useCallback((format) => {
+  const exportData = useCallback((format: string) => {
     console.log(`Exporting data in ${format} format`);
   }, []);
 
-  const filterDataByThreshold = useCallback((data, threshold) => {
+  const filterDataByThreshold = useCallback((data: { actual: number }[], threshold: [number, number]) => {
     return data.filter(
       (item) => item.actual >= threshold[0] && item.actual <= threshold[1]
     );
@@ -493,7 +503,7 @@ export function AdvancedEnvironmentalDashboardComponent() {
                       defaultValue={[0, 200]}
                       max={200}
                       step={1}
-                      onValueChange={setEnergyThreshold}
+                      onValueChange={(value: [number, number]) => setEnergyThreshold(value)}
                       className="w-full"
                     />
                     <div className="flex justify-between text-sm text-gray-500 mt-1">
