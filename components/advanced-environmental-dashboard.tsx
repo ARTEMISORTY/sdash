@@ -26,12 +26,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/ui/tabs";
+import { Tabs, TabsContent } from "@/components/ui/tabs";
 import {
   Select,
   SelectContent,
@@ -41,88 +36,18 @@ import {
 } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import {
-  LineChart,
-  Line,
-  BarChart,
-  Bar,
-  PieChart,
-  Pie,
-  Cell,
-  ResponsiveContainer,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  AreaChart,
-  Area,
-  RadarChart,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis,
-  Radar,
-  ScatterChart,
-  Scatter,
-} from "recharts";
-import {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "@/components/ui/chart";
+import { LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, ResponsiveContainer, XAxis, YAxis, CartesianGrid, Tooltip, Legend, AreaChart, Area, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ScatterChart, Scatter } from "recharts";
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 
 class DataStore {
   static kpiData = {
     energyUsage: [
-      {
-        month: "Jan",
-        actual: 150,
-        target: 140,
-        projection: 155,
-        renewable: 90,
-        nonRenewable: 60,
-      },
-      {
-        month: "Feb",
-        actual: 140,
-        target: 135,
-        projection: 145,
-        renewable: 85,
-        nonRenewable: 55,
-      },
-      {
-        month: "Mar",
-        actual: 130,
-        target: 130,
-        projection: 135,
-        renewable: 80,
-        nonRenewable: 50,
-      },
-      {
-        month: "Apr",
-        actual: 120,
-        target: 125,
-        projection: 125,
-        renewable: 75,
-        nonRenewable: 45,
-      },
-      {
-        month: "May",
-        actual: 110,
-        target: 120,
-        projection: 115,
-        renewable: 70,
-        nonRenewable: 40,
-      },
-      {
-        month: "Jun",
-        actual: 100,
-        target: 115,
-        projection: 105,
-        renewable: 65,
-        nonRenewable: 35,
-      },
+      { month: "Jan", actual: 150, target: 140, projection: 155, renewable: 90, nonRenewable: 60 },
+      { month: "Feb", actual: 140, target: 135, projection: 145, renewable: 85, nonRenewable: 55 },
+      { month: "Mar", actual: 130, target: 130, projection: 135, renewable: 80, nonRenewable: 50 },
+      { month: "Apr", actual: 120, target: 125, projection: 125, renewable: 75, nonRenewable: 45 },
+      { month: "May", actual: 110, target: 120, projection: 115, renewable: 70, nonRenewable: 40 },
+      { month: "Jun", actual: 100, target: 115, projection: 105, renewable: 65, nonRenewable: 35 },
     ],
     energySourceBreakdown: [
       { source: "Solar", percentage: 40 },
@@ -132,54 +57,12 @@ class DataStore {
       { source: "Coal", percentage: 5 },
     ],
     wasteManagement: [
-      {
-        month: "Jan",
-        recyclable: 45,
-        compostable: 30,
-        landfill: 25,
-        hazardous: 5,
-        electronic: 10,
-      },
-      {
-        month: "Feb",
-        recyclable: 48,
-        compostable: 32,
-        landfill: 20,
-        hazardous: 4,
-        electronic: 12,
-      },
-      {
-        month: "Mar",
-        recyclable: 50,
-        compostable: 35,
-        landfill: 15,
-        hazardous: 3,
-        electronic: 11,
-      },
-      {
-        month: "Apr",
-        recyclable: 55,
-        compostable: 33,
-        landfill: 12,
-        hazardous: 3,
-        electronic: 13,
-      },
-      {
-        month: "May",
-        recyclable: 58,
-        compostable: 34,
-        landfill: 8,
-        hazardous: 2,
-        electronic: 12,
-      },
-      {
-        month: "Jun",
-        recyclable: 60,
-        compostable: 35,
-        landfill: 5,
-        hazardous: 1,
-        electronic: 14,
-      },
+      { month: "Jan", recyclable: 45, compostable: 30, landfill: 25, hazardous: 5, electronic: 10 },
+      { month: "Feb", recyclable: 48, compostable: 32, landfill: 20, hazardous: 4, electronic: 12 },
+      { month: "Mar", recyclable: 50, compostable: 35, landfill: 15, hazardous: 3, electronic: 11 },
+      { month: "Apr", recyclable: 55, compostable: 33, landfill: 12, hazardous: 3, electronic: 13 },
+      { month: "May", recyclable: 58, compostable: 34, landfill: 8, hazardous: 2, electronic: 12 },
+      { month: "Jun", recyclable: 60, compostable: 35, landfill: 5, hazardous: 1, electronic: 14 },
     ],
     wasteDistribution: [
       { type: "Recyclable", value: 60 },
@@ -284,22 +167,10 @@ class DataStore {
     ],
   };
 
-  static COLORS = [
-    "#00C49F",
-    "#FFBB28",
-    "#FF8042",
-    "#0088FE",
-    "#8884D8",
-    "#82ca9d",
-  ];
+  static COLORS = ["#00C49F", "#FFBB28", "#FF8042", "#0088FE", "#8884D8", "#82ca9d"];
 }
 
-function DateRangePicker({
-  startDate,
-  endDate,
-  onStartDateChange,
-  onEndDateChange,
-}) {
+function DateRangePicker({ startDate, endDate, onStartDateChange, onEndDateChange }) {
   return (
     <div className="flex items-center space-x-2">
       <div className="flex items-center space-x-2">
@@ -501,6 +372,7 @@ export function AdvancedEnvironmentalDashboardComponent() {
             onValueChange={setActiveTab}
             className="space-y-4"
           >
+            {/* Overview Tab */}
             <TabsContent value="overview" className="space-y-4">
               <Card>
                 <CardHeader>
@@ -576,7 +448,7 @@ export function AdvancedEnvironmentalDashboardComponent() {
                         },
                       }}
                     >
-                      <ResponsiveContainer width="100%" height="100%">
+                      <ResponsiveContainer width="100%" height={400}>
                         <RadarChart
                           cx="50%"
                           cy="50%"
@@ -602,8 +474,898 @@ export function AdvancedEnvironmentalDashboardComponent() {
                 </CardContent>
               </Card>
             </TabsContent>
-            {/* Repeat similar changes for other tabs, using DataStore.kpiData */}
-            {/* For brevity, other tabs are not displayed here */}
+
+            {/* Energy Tab */}
+            <TabsContent value="energy" className="space-y-4">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Energy Usage Trends</CardTitle>
+                  <CardDescription>
+                    Monthly energy usage with targets and projections (kWh)
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="mb-4">
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Energy Usage Threshold (kWh)
+                    </label>
+                    <Slider
+                      defaultValue={[0, 200]}
+                      max={200}
+                      step={1}
+                      onValueChange={setEnergyThreshold}
+                      className="w-full"
+                    />
+                    <div className="flex justify-between text-sm text-gray-500 mt-1">
+                      <span>{energyThreshold[0]} kWh</span>
+                      <span>{energyThreshold[1]} kWh</span>
+                    </div>
+                  </div>
+                  <div className="h-auto">
+                    <ChartContainer
+                      config={{
+                        actual: {
+                          label: "Actual Usage",
+                          color: "hsl(var(--chart-1))",
+                        },
+                        target: {
+                          label: "Target",
+                          color: "hsl(var(--chart-2))",
+                        },
+                        projection: {
+                          label: "Projection",
+                          color: "hsl(var(--chart-3))",
+                        },
+                        renewable: {
+                          label: "Renewable",
+                          color: "hsl(var(--chart-4))",
+                        },
+                        nonRenewable: {
+                          label: "Non-Renewable",
+                          color: "hsl(var(--chart-5))",
+                        },
+                      }}
+                    >
+                      <ResponsiveContainer width="100%" height={400}>
+                        <LineChart
+                          data={filterDataByThreshold(
+                            DataStore.kpiData.energyUsage,
+                            energyThreshold
+                          )}
+                        >
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis dataKey="month" />
+                          <YAxis />
+                          <ChartTooltip content={<ChartTooltipContent />} />
+                          <Legend />
+                          <Line
+                            type="monotone"
+                            dataKey="actual"
+                            stroke="var(--color-actual)"
+                            strokeWidth={2}
+                          />
+                          <Line
+                            type="monotone"
+                            dataKey="target"
+                            stroke="var(--color-target)"
+                            strokeWidth={2}
+                            strokeDasharray="5 5"
+                          />
+                          <Line
+                            type="monotone"
+                            dataKey="projection"
+                            stroke="var(--color-projection)"
+                            strokeWidth={2}
+                            strokeDasharray="3 3"
+                          />
+                          <Line
+                            type="monotone"
+                            dataKey="renewable"
+                            stroke="var(--color-renewable)"
+                            strokeWidth={2}
+                          />
+                          <Line
+                            type="monotone"
+                            dataKey="nonRenewable"
+                            stroke="var(--color-nonRenewable)"
+                            strokeWidth={2}
+                          />
+                        </LineChart>
+                      </ResponsiveContainer>
+                    </ChartContainer>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle>Energy Source Breakdown</CardTitle>
+                  <CardDescription>
+                    Distribution of energy sources
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="h-auto">
+                    <ChartContainer
+                      config={{
+                        percentage: {
+                          label: "Percentage",
+                          color: "hsl(var(--chart-1))",
+                        },
+                      }}
+                    >
+                      <ResponsiveContainer width="100%" height={400}>
+                        <PieChart>
+                          <Pie
+                            data={DataStore.kpiData.energySourceBreakdown}
+                            cx="50%"
+                            cy="50%"
+                            labelLine={false}
+                            outerRadius={150}
+                            fill="#8884d8"
+                            dataKey="percentage"
+                            label={({ name, percent }) =>
+                              `${name} ${(percent * 100).toFixed(0)}%`
+                            }
+                          >
+                            {DataStore.kpiData.energySourceBreakdown.map(
+                              (entry, index) => (
+                                <Cell
+                                  key={`cell-${index}`}
+                                  fill={
+                                    DataStore.COLORS[
+                                      index % DataStore.COLORS.length
+                                    ]
+                                  }
+                                />
+                              )
+                            )}
+                          </Pie>
+                          <ChartTooltip content={<ChartTooltipContent />} />
+                          <Legend />
+                        </PieChart>
+                      </ResponsiveContainer>
+                    </ChartContainer>
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            {/* Waste Tab */}
+            <TabsContent value="waste" className="space-y-4">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Waste Management Trends</CardTitle>
+                  <CardDescription>
+                    Monthly breakdown of waste types (%)
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="h-auto">
+                    <ChartContainer
+                      config={{
+                        recyclable: {
+                          label: "Recyclable",
+                          color: "hsl(var(--chart-1))",
+                        },
+                        compostable: {
+                          label: "Compostable",
+                          color: "hsl(var(--chart-2))",
+                        },
+                        landfill: {
+                          label: "Landfill",
+                          color: "hsl(var(--chart-3))",
+                        },
+                        hazardous: {
+                          label: "Hazardous",
+                          color: "hsl(var(--chart-4))",
+                        },
+                        electronic: {
+                          label: "Electronic",
+                          color: "hsl(var(--chart-5))",
+                        },
+                      }}
+                    >
+                      <ResponsiveContainer width="100%" height={400}>
+                        <AreaChart data={DataStore.kpiData.wasteManagement}>
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis dataKey="month" />
+                          <YAxis />
+                          <ChartTooltip content={<ChartTooltipContent />} />
+                          <Legend />
+                          <Area
+                            type="monotone"
+                            dataKey="recyclable"
+                            stackId="1"
+                            stroke="var(--color-recyclable)"
+                            fill="var(--color-recyclable)"
+                          />
+                          <Area
+                            type="monotone"
+                            dataKey="compostable"
+                            stackId="1"
+                            stroke="var(--color-compostable)"
+                            fill="var(--color-compostable)"
+                          />
+                          <Area
+                            type="monotone"
+                            dataKey="landfill"
+                            stackId="1"
+                            stroke="var(--color-landfill)"
+                            fill="var(--color-landfill)"
+                          />
+                          <Area
+                            type="monotone"
+                            dataKey="hazardous"
+                            stackId="1"
+                            stroke="var(--color-hazardous)"
+                            fill="var(--color-hazardous)"
+                          />
+                          <Area
+                            type="monotone"
+                            dataKey="electronic"
+                            stackId="1"
+                            stroke="var(--color-electronic)"
+                            fill="var(--color-electronic)"
+                          />
+                        </AreaChart>
+                      </ResponsiveContainer>
+                    </ChartContainer>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle>Waste Distribution</CardTitle>
+                  <CardDescription>
+                    Current distribution of waste types
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="h-auto">
+                    <ChartContainer
+                      config={{
+                        value: {
+                          label: "Percentage",
+                          color: "hsl(var(--chart-1))",
+                        },
+                      }}
+                    >
+                      <ResponsiveContainer width="100%" height={400}>
+                        <PieChart>
+                          <Pie
+                            data={DataStore.kpiData.wasteDistribution}
+                            cx="50%"
+                            cy="50%"
+                            labelLine={false}
+                            outerRadius={150}
+                            fill="#8884d8"
+                            dataKey="value"
+                            label={({ name, percent }) =>
+                              `${name} ${(percent * 100).toFixed(0)}%`
+                            }
+                          >
+                            {DataStore.kpiData.wasteDistribution.map(
+                              (entry, index) => (
+                                <Cell
+                                  key={`cell-${index}`}
+                                  fill={
+                                    DataStore.COLORS[
+                                      index % DataStore.COLORS.length
+                                    ]
+                                  }
+                                />
+                              )
+                            )}
+                          </Pie>
+                          <ChartTooltip content={<ChartTooltipContent />} />
+                          <Legend />
+                        </PieChart>
+                      </ResponsiveContainer>
+                    </ChartContainer>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle>Recycling Efficiency</CardTitle>
+                  <CardDescription>
+                    Efficiency by material type (%)
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="h-auto">
+                    <ChartContainer
+                      config={{
+                        efficiency: {
+                          label: "Efficiency",
+                          color: "hsl(var(--chart-1))",
+                        },
+                      }}
+                    >
+                      <ResponsiveContainer width="100%" height={400}>
+                        <BarChart data={DataStore.kpiData.recyclingEfficiency}>
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis dataKey="material" />
+                          <YAxis />
+                          <ChartTooltip content={<ChartTooltipContent />} />
+                          <Legend />
+                          <Bar
+                            dataKey="efficiency"
+                            fill="var(--color-efficiency)"
+                          />
+                        </BarChart>
+                      </ResponsiveContainer>
+                    </ChartContainer>
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            {/* Scrap Management Tab */}
+            <TabsContent value="scrap" className="space-y-4">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Scrap Management Trends</CardTitle>
+                  <CardDescription>
+                    Monthly breakdown of scrap metal types (tons)
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="h-auto">
+                    <ChartContainer
+                      config={{
+                        steel: {
+                          label: "Steel",
+                          color: "hsl(var(--chart-1))",
+                        },
+                        aluminum: {
+                          label: "Aluminum",
+                          color: "hsl(var(--chart-2))",
+                        },
+                        copper: {
+                          label: "Copper",
+                          color: "hsl(var(--chart-3))",
+                        },
+                        other: {
+                          label: "Other",
+                          color: "hsl(var(--chart-4))",
+                        },
+                      }}
+                    >
+                      <ResponsiveContainer width="100%" height={400}>
+                        <BarChart data={DataStore.kpiData.scrapManagement}>
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis dataKey="month" />
+                          <YAxis />
+                          <ChartTooltip content={<ChartTooltipContent />} />
+                          <Legend />
+                          <Bar
+                            dataKey="steel"
+                            stackId="a"
+                            fill="var(--color-steel)"
+                          />
+                          <Bar
+                            dataKey="aluminum"
+                            stackId="a"
+                            fill="var(--color-aluminum)"
+                          />
+                          <Bar
+                            dataKey="copper"
+                            stackId="a"
+                            fill="var(--color-copper)"
+                          />
+                          <Bar
+                            dataKey="other"
+                            stackId="a"
+                            fill="var(--color-other)"
+                          />
+                        </BarChart>
+                      </ResponsiveContainer>
+                    </ChartContainer>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle>Scrap Metal Types Distribution</CardTitle>
+                  <CardDescription>
+                    Current distribution of scrap metal types
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="h-auto">
+                    <ChartContainer
+                      config={{
+                        value: {
+                          label: "Percentage",
+                          color: "hsl(var(--chart-1))",
+                        },
+                      }}
+                    >
+                      <ResponsiveContainer width="100%" height={400}>
+                        <PieChart>
+                          <Pie
+                            data={DataStore.kpiData.scrapMetalTypes}
+                            cx="50%"
+                            cy="50%"
+                            labelLine={false}
+                            outerRadius={150}
+                            fill="#8884d8"
+                            dataKey="value"
+                            label={({ name, percent }) =>
+                              `${name} ${(percent * 100).toFixed(0)}%`
+                            }
+                          >
+                            {DataStore.kpiData.scrapMetalTypes.map(
+                              (entry, index) => (
+                                <Cell
+                                  key={`cell-${index}`}
+                                  fill={
+                                    DataStore.COLORS[
+                                      index % DataStore.COLORS.length
+                                    ]
+                                  }
+                                />
+                              )
+                            )}
+                          </Pie>
+                          <ChartTooltip content={<ChartTooltipContent />} />
+                          <Legend />
+                        </PieChart>
+                      </ResponsiveContainer>
+                    </ChartContainer>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle>Scrap Recycling Rate</CardTitle>
+                  <CardDescription>
+                    Recycling rate by metal type (%)
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="h-auto">
+                    <ChartContainer
+                      config={{
+                        rate: {
+                          label: "Recycling Rate",
+                          color: "hsl(var(--chart-1))",
+                        },
+                      }}
+                    >
+                      <ResponsiveContainer width="100%" height={400}>
+                        <BarChart data={DataStore.kpiData.scrapRecyclingRate}>
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis dataKey="metal" />
+                          <YAxis />
+                          <ChartTooltip content={<ChartTooltipContent />} />
+                          <Legend />
+                          <Bar dataKey="rate" fill="var(--color-rate)" />
+                        </BarChart>
+                      </ResponsiveContainer>
+                    </ChartContainer>
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            {/* Greenhouse Gas Tab */}
+            <TabsContent value="ghg" className="space-y-4">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Greenhouse Gas Emissions</CardTitle>
+                  <CardDescription>
+                    Monthly direct and indirect emissions (tons CO2e)
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="h-auto">
+                    <ChartContainer
+                      config={{
+                        direct: {
+                          label: "Direct Emissions",
+                          color: "hsl(var(--chart-1))",
+                        },
+                        indirect: {
+                          label: "Indirect Emissions",
+                          color: "hsl(var(--chart-2))",
+                        },
+                        total: {
+                          label: "Total Emissions",
+                          color: "hsl(var(--chart-3))",
+                        },
+                      }}
+                    >
+                      <ResponsiveContainer width="100%" height={400}>
+                        <LineChart
+                          data={DataStore.kpiData.greenhouseGasEmissions}
+                        >
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis dataKey="month" />
+                          <YAxis />
+                          <ChartTooltip content={<ChartTooltipContent />} />
+                          <Legend />
+                          <Line
+                            type="monotone"
+                            dataKey="direct"
+                            stroke="var(--color-direct)"
+                            strokeWidth={2}
+                          />
+                          <Line
+                            type="monotone"
+                            dataKey="indirect"
+                            stroke="var(--color-indirect)"
+                            strokeWidth={2}
+                          />
+                          <Line
+                            type="monotone"
+                            dataKey="total"
+                            stroke="var(--color-total)"
+                            strokeWidth={2}
+                          />
+                        </LineChart>
+                      </ResponsiveContainer>
+                    </ChartContainer>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle>Emissions Sources</CardTitle>
+                  <CardDescription>
+                    Breakdown of greenhouse gas emissions by source
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="h-auto">
+                    <ChartContainer
+                      config={{
+                        value: {
+                          label: "Percentage",
+                          color: "hsl(var(--chart-1))",
+                        },
+                      }}
+                    >
+                      <ResponsiveContainer width="100%" height={400}>
+                        <PieChart>
+                          <Pie
+                            data={DataStore.kpiData.emissionsSources}
+                            cx="50%"
+                            cy="50%"
+                            labelLine={false}
+                            outerRadius={150}
+                            fill="#8884d8"
+                            dataKey="value"
+                            label={({ name, percent }) =>
+                              `${name} ${(percent * 100).toFixed(0)}%`
+                            }
+                          >
+                            {DataStore.kpiData.emissionsSources.map(
+                              (entry, index) => (
+                                <Cell
+                                  key={`cell-${index}`}
+                                  fill={
+                                    DataStore.COLORS[
+                                      index % DataStore.COLORS.length
+                                    ]
+                                  }
+                                />
+                              )
+                            )}
+                          </Pie>
+                          <ChartTooltip content={<ChartTooltipContent />} />
+                          <Legend />
+                        </PieChart>
+                      </ResponsiveContainer>
+                    </ChartContainer>
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            {/* Electricity Tab */}
+            <TabsContent value="electricity" className="space-y-4">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Electricity Utilization</CardTitle>
+                  <CardDescription>
+                    Usage and efficiency by department
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="h-auto">
+                    <ChartContainer
+                      config={{
+                        usage: {
+                          label: "Usage (kWh)",
+                          color: "hsl(var(--chart-1))",
+                        },
+                        efficiency: {
+                          label: "Efficiency (%)",
+                          color: "hsl(var(--chart-2))",
+                        },
+                      }}
+                    >
+                      <ResponsiveContainer width="100%" height={400}>
+                        <ScatterChart>
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis dataKey="usage" name="Usage (kWh)" />
+                          <YAxis dataKey="efficiency" name="Efficiency (%)" />
+                          <ChartTooltip content={<ChartTooltipContent />} />
+                          <Legend />
+                          <Scatter
+                            name="Departments"
+                            data={DataStore.kpiData.electricityUtilization}
+                            fill="var(--color-usage)"
+                          >
+                            {DataStore.kpiData.electricityUtilization.map(
+                              (entry, index) => (
+                                <Cell
+                                  key={`cell-${index}`}
+                                  fill={
+                                    DataStore.COLORS[
+                                      index % DataStore.COLORS.length
+                                    ]
+                                  }
+                                />
+                              )
+                            )}
+                          </Scatter>
+                        </ScatterChart>
+                      </ResponsiveContainer>
+                    </ChartContainer>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle>Electricity Usage Trends</CardTitle>
+                  <CardDescription>
+                    Monthly electricity usage vs target (kWh)
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="h-auto">
+                    <ChartContainer
+                      config={{
+                        usage: {
+                          label: "Usage",
+                          color: "hsl(var(--chart-1))",
+                        },
+                        target: {
+                          label: "Target",
+                          color: "hsl(var(--chart-2))",
+                        },
+                      }}
+                    >
+                      <ResponsiveContainer width="100%" height={400}>
+                        <LineChart data={DataStore.kpiData.electricityTrends}>
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis dataKey="month" />
+                          <YAxis />
+                          <ChartTooltip content={<ChartTooltipContent />} />
+                          <Legend />
+                          <Line
+                            type="monotone"
+                            dataKey="usage"
+                            stroke="var(--color-usage)"
+                            strokeWidth={2}
+                          />
+                          <Line
+                            type="monotone"
+                            dataKey="target"
+                            stroke="var(--color-target)"
+                            strokeWidth={2}
+                            strokeDasharray="5 5"
+                          />
+                        </LineChart>
+                      </ResponsiveContainer>
+                    </ChartContainer>
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            {/* Water Tab */}
+            <TabsContent value="water" className="space-y-4">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Water Usage and Recycling</CardTitle>
+                  <CardDescription>
+                    Monthly water consumption and recycling (m³)
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="h-auto">
+                    <ChartContainer
+                      config={{
+                        usage: {
+                          label: "Total Usage",
+                          color: "hsl(var(--chart-1))",
+                        },
+                        recycled: {
+                          label: "Recycled",
+                          color: "hsl(var(--chart-2))",
+                        },
+                        target: {
+                          label: "Target",
+                          color: "hsl(var(--chart-3))",
+                        },
+                      }}
+                    >
+                      <ResponsiveContainer width="100%" height={400}>
+                        <LineChart data={DataStore.kpiData.waterUsage}>
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis dataKey="month" />
+                          <YAxis />
+                          <ChartTooltip content={<ChartTooltipContent />} />
+                          <Legend />
+                          <Line
+                            type="monotone"
+                            dataKey="usage"
+                            stroke="var(--color-usage)"
+                            strokeWidth={2}
+                          />
+                          <Line
+                            type="monotone"
+                            dataKey="recycled"
+                            stroke="var(--color-recycled)"
+                            strokeWidth={2}
+                          />
+                          <Line
+                            type="monotone"
+                            dataKey="target"
+                            stroke="var(--color-target)"
+                            strokeWidth={2}
+                            strokeDasharray="5 5"
+                          />
+                        </LineChart>
+                      </ResponsiveContainer>
+                    </ChartContainer>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle>Water Usage by Process</CardTitle>
+                  <CardDescription>
+                    Breakdown of water usage by process
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="h-auto">
+                    <ChartContainer
+                      config={{
+                        usage: {
+                          label: "Usage (%)",
+                          color: "hsl(var(--chart-1))",
+                        },
+                      }}
+                    >
+                      <ResponsiveContainer width="100%" height={400}>
+                        <PieChart>
+                          <Pie
+                            data={DataStore.kpiData.waterUsageByProcess}
+                            cx="50%"
+                            cy="50%"
+                            labelLine={false}
+                            outerRadius={150}
+                            fill="#8884d8"
+                            dataKey="usage"
+                            label={({ name, percent }) =>
+                              `${name} ${(percent * 100).toFixed(0)}%`
+                            }
+                          >
+                            {DataStore.kpiData.waterUsageByProcess.map(
+                              (entry, index) => (
+                                <Cell
+                                  key={`cell-${index}`}
+                                  fill={
+                                    DataStore.COLORS[
+                                      index % DataStore.COLORS.length
+                                    ]
+                                  }
+                                />
+                              )
+                            )}
+                          </Pie>
+                          <ChartTooltip content={<ChartTooltipContent />} />
+                          <Legend />
+                        </PieChart>
+                      </ResponsiveContainer>
+                    </ChartContainer>
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
+
+            {/* Carbon Footprint Tab */}
+            <TabsContent value="carbon" className="space-y-4">
+              <Card>
+                <CardHeader>
+                  <CardTitle>Carbon Footprint Breakdown</CardTitle>
+                  <CardDescription>
+                    Distribution of carbon emissions by category
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="h-auto">
+                    <ChartContainer
+                      config={{
+                        value: {
+                          label: "Carbon Footprint (%)",
+                          color: "hsl(var(--chart-1))",
+                        },
+                      }}
+                    >
+                      <ResponsiveContainer width="100%" height={400}>
+                        <PieChart>
+                          <Pie
+                            data={DataStore.kpiData.carbonFootprint}
+                            cx="50%"
+                            cy="50%"
+                            labelLine={false}
+                            outerRadius={150}
+                            fill="#8884d8"
+                            dataKey="value"
+                            label={({ name, percent }) =>
+                              `${name} ${(percent * 100).toFixed(0)}%`
+                            }
+                          >
+                            {DataStore.kpiData.carbonFootprint.map(
+                              (entry, index) => (
+                                <Cell
+                                  key={`cell-${index}`}
+                                  fill={
+                                    DataStore.COLORS[
+                                      index % DataStore.COLORS.length
+                                    ]
+                                  }
+                                />
+                              )
+                            )}
+                          </Pie>
+                          <ChartTooltip content={<ChartTooltipContent />} />
+                          <Legend />
+                        </PieChart>
+                      </ResponsiveContainer>
+                    </ChartContainer>
+                  </div>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader>
+                  <CardTitle>Carbon Offset Projects</CardTitle>
+                  <CardDescription>
+                    Distribution of carbon offset projects
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="h-auto">
+                    <ChartContainer
+                      config={{
+                        offset: {
+                          label: "Offset (%)",
+                          color: "hsl(var(--chart-1))",
+                        },
+                      }}
+                    >
+                      <ResponsiveContainer width="100%" height={400}>
+                        <BarChart data={DataStore.kpiData.carbonOffsetProjects}>
+                          <CartesianGrid strokeDasharray="3 3" />
+                          <XAxis dataKey="project" />
+                          <YAxis />
+                          <ChartTooltip content={<ChartTooltipContent />} />
+                          <Legend />
+                          <Bar dataKey="offset" fill="var(--color-offset)" />
+                        </BarChart>
+                      </ResponsiveContainer>
+                    </ChartContainer>
+                  </div>
+                </CardContent>
+              </Card>
+            </TabsContent>
           </Tabs>
         </main>
       </div>
